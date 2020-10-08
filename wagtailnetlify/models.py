@@ -40,7 +40,7 @@ def deploy(sender, **kwargs):
     connection.close()
 
 
-if getattr(settings, 'NETLIFY_AUTO_DEPLOY', False) == True:
+if getattr(settings, 'NETLIFY_AUTO_DEPLOY', True) == True:
     function_path = getattr(settings, 'NETLIFY_DEPLOY_FUNCTION', 'wagtailnetlify.models.deploy')
     function = import_string(function_path)
     page_published.connect(function)
